@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"math/rand"
@@ -16,12 +17,15 @@ type Field struct {
 	height int
 }
 
+var field *Field
+
 var (
-	setfps      int    = 15
-	setwidth    int    = 80
-	setheight   int    = 20
-	setduration int    = 1000
-	setfilename string = ""
+	setfps      int
+	setwidth    int
+	setheight   int
+	setduration int
+	setfilename string
+	port        string
 )
 
 func newField(width, height int) *Field {
@@ -148,34 +152,13 @@ func (field *Field) printField() string {
 }
 
 func main() {
-	var err interface{}
-	var field *Field
-	argscount := len(os.Args)
-	if argscount > 2 {
-		setwidth, err = strconv.Atoi(os.Args[1])
-		if err != nil || setwidth < 10 {
-			setwidth = 80
-		}
-		setheight, err = strconv.Atoi(os.Args[2])
-		if err != nil || setheight < 10 {
-			setheight = 20
-		}
-	}
-	if argscount > 3 {
-		setduration, err = strconv.Atoi(os.Args[3])
-		if err != nil || setduration < 10 {
-			setduration = -1
-		}
-	}
-	if argscount > 4 {
-		setfps, err = strconv.Atoi(os.Args[4])
-		if err != nil {
-			setfps = 20
-		}
-	}
-	if argscount > 5 {
-		setfilename = os.Args[5]
-	}
+	flag.IntVar(&setwidth, "w", 80, "terminal width")
+	flag.IntVar(&setheight, "h", 20, "terminal height")
+	flag.IntVar(&setduration, "d", -1, "game of life duration")
+	flag.IntVar(&setfps, "f", 20, "frames per second")
+	flag.StringVar(&setfilename, "o", "", "open file")
+	flag.Parse()
+
 	if setfilename != "" {
 		field = loadFirstRound(setwidth, setheight, setfilename)
 	} else {
@@ -186,7 +169,8 @@ func main() {
 		field = field.nextRound()
 		time.Sleep(time.Second / time.Duration(setfps))
 		fmt.Print("\033[2J")
-		fmt.Print(field.printField())
+		str := field.printField()
+		fmt.Print(str)
 	}
 
 	if setfilename != "" {
