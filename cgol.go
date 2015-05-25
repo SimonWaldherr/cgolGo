@@ -37,6 +37,10 @@ func newField(width, height int) *Field {
 }
 
 func (field *Field) setVitality(x, y int, vitality int) {
+	x += field.width
+	x %= field.width
+	y += field.height
+	y %= field.height
 	field.cells[y][x] = vitality
 }
 
