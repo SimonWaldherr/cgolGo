@@ -96,31 +96,34 @@ func loadFirstRound(width, height int, filename string) *Field {
 			x := 0
 			y := 0
 			for _, char := range output {
-				if char == 10 {
+				switch char {
+				case 10:
 					y++
 					x = 0
-				} else if char == 49 {
+				case 49:
 					field.setVitality(x, y, 1)
-				} else if char == 50 {
+				case 50:
 					field.setVitality(x, y, 2)
-				} else if char == 51 {
+				case 51:
 					field.setVitality(x, y, 3)
-				} else if char == 52 {
+				case 52:
 					field.setVitality(x, y, 4)
-				} else if char == 53 {
+				case 53:
 					field.setVitality(x, y, 5)
-				} else if char == 54 {
+				case 54:
 					field.setVitality(x, y, 6)
-				} else if char == 55 {
+				case 55:
 					field.setVitality(x, y, 7)
-				} else if char == 56 {
+				case 56:
 					field.setVitality(x, y, 8)
-				} else if char == 57 {
+				case 57:
 					field.setVitality(x, y, 9)
-				} else if char != 32 {
-					field.setVitality(x, y, 1)
-				} else {
-					field.setVitality(x, y, 0)
+				default:
+					if char != 32 {
+						field.setVitality(x, y, 1)
+					} else {
+						field.setVitality(x, y, 0)
+					}
 				}
 				x++
 			}
