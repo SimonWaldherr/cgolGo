@@ -1,13 +1,13 @@
 package main
 
 import (
-	gif "./gif"
 	"bytes"
 	"flag"
 	"fmt"
 	"io/ioutil"
 	"math/rand"
 	"os"
+	"simonwaldherr.de/go/cgolGo/gif"
 	"simonwaldherr.de/go/golibs/gcurses"
 	"time"
 )
