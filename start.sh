@@ -18,11 +18,11 @@ fi
 
 if [ "$INPUT" == "R" ] || [ "$INPUT" == "r" ]
   then
-  go run cgol.go -w $(tput cols) -h $(tput lines) -d -1 -f $FPS
+  go run cgol.go -w $(tput cols) -h $(($(tput lines)-5)) -d -1 -f $FPS
 elif [ "$INPUT" == "F" ] || [ "$INPUT" == "f" ]
   then
   echo "ENTER THE NAME OF A FILE"
   ls "structures"
   read -n 2 -s INPUT
-  go run cgol.go -w $(tput cols) -h $(tput lines) -d -1 -f $FPS -o "structures/$INPUT.txt"
+  go run cgol.go -w $(tput cols) -h $(($(tput lines)-5)) -d -1 -f $FPS -o "structures/$INPUT.txt"
 fi

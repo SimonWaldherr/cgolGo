@@ -2,7 +2,7 @@
 
 [![Flattr donate button](https://img.shields.io/badge/donate%20via-flattr-green.svg)](https://flattr.com/submit/auto?user_id=SimonWaldherr&url=http%3A%2F%2Fgithub.com%2FSimonWaldherr%2FcgolGo "Donate monthly to this project using Flattr") 
 [![PayPal donate button](https://img.shields.io/badge/donate%20via-paypal-blue.svg)](https://www.paypal.me/SimonWaldherr "Donate to this project via PayPal.me") 
-[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/SimonWaldherr/cgolGo/master/LICENSE)  
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/SimonWaldherr/cgolGo/master/LICENSE)  
 
 ## conway's game of life in golang
 
@@ -29,4 +29,4 @@ in [golang](http://en.wikipedia.org/wiki/Go_(programming_language))
 
 ## license
 
-[MIT](https://github.com/SimonWaldherr/cgol.go/blob/master/LICENSE.md)  
+[MIT](https://github.com/SimonWaldherr/cgolGo/blob/master/LICENSE)  
