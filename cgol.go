@@ -1,13 +1,14 @@
 package main
 
 import (
+	gif "./gif"
 	"bytes"
 	"flag"
 	"fmt"
 	"io/ioutil"
 	"math/rand"
 	"os"
-	"strconv"
+	"simonwaldherr.de/go/golibs/gcurses"
 	"time"
 )
 
@@ -20,12 +21,14 @@ type Field struct {
 var field *Field
 
 var (
-	setfps      int
-	setwidth    int
-	setheight   int
-	setduration int
-	setfilename string
-	port        string
+	setfps       int
+	setwidth     int
+	setheight    int
+	setduration  int
+	outputlength int
+	setfilename  string
+	outputfile   string
+	port         string
 )
 
 func newField(width, height int) *Field {
@@ -148,7 +151,7 @@ func (field *Field) printField() string {
 	for y := 0; y < field.height; y++ {
 		for x := 0; x < field.width; x++ {
 			if field.getVitality(x, y) > 0 {
-				buffer.WriteString(strconv.Itoa(field.getVitality(x, y)))
+				buffer.WriteString("█")
 			} else {
 				buffer.WriteByte(byte(' '))
 			}
@@ -159,11 +162,20 @@ func (field *Field) printField() string {
 }
 
 func main() {
+	var gv = &gif.GifVisualizer{}
+
+	writer := gcurses.New()
+	writer.Start()
+
 	flag.IntVar(&setwidth, "w", 80, "terminal width")
 	flag.IntVar(&setheight, "h", 20, "terminal height")
 	flag.IntVar(&setduration, "d", -1, "game of life duration")
 	flag.IntVar(&setfps, "f", 20, "frames per second")
 	flag.StringVar(&setfilename, "o", "", "open file")
+
+	flag.StringVar(&outputfile, "g", "", "export to GIF file")
+	flag.IntVar(&outputlength, "l", 200, "frames")
+
 	flag.Parse()
 
 	if setfilename != "" {
@@ -172,15 +184,21 @@ func main() {
 		field = generateFirstRound(setwidth, setheight)
 	}
 
-	for i := 0; i != setduration; i++ {
-		field = field.nextRound()
-		time.Sleep(time.Second / time.Duration(setfps))
-		fmt.Print("\033[2J")
-		str := field.printField()
-		fmt.Print(str)
+	if outputfile != "" {
+		gv.Setup(outputfile)
 	}
 
-	if setfilename != "" {
-		ioutil.WriteFile(setfilename, []byte(field.printField()), 0644)
+	for i := 0; i != setduration; i++ {
+		field = field.nextRound()
+		if outputfile != "" {
+			gv.AddFrame(field.cells)
+		} else {
+			time.Sleep(time.Second / time.Duration(setfps))
+			fmt.Fprintf(writer, "%v\n", field.printField())
+		}
+	}
+
+	if outputfile != "" {
+		gv.Complete()
 	}
 }
