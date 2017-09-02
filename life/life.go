@@ -89,28 +89,12 @@ func LoadFirstRound(width, height int, filename string) *Field {
 	x := 0
 	y := 0
 	for _, char := range gofile {
-		switch char {
-		case 10:
+		switch {
+		case char == 10:
 			y++
 			x = 0
-		case 49:
-			field.setVitality(x, y, 1)
-		case 50:
-			field.setVitality(x, y, 2)
-		case 51:
-			field.setVitality(x, y, 3)
-		case 52:
-			field.setVitality(x, y, 4)
-		case 53:
-			field.setVitality(x, y, 5)
-		case 54:
-			field.setVitality(x, y, 6)
-		case 55:
-			field.setVitality(x, y, 7)
-		case 56:
-			field.setVitality(x, y, 8)
-		case 57:
-			field.setVitality(x, y, 9)
+		case char > 48 && char < 58:
+			field.setVitality(x, y, int(char) - 48)
 		default:
 			if char != 32 {
 				field.setVitality(x, y, 1)

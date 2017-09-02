@@ -1,13 +1,13 @@
 # cgolGo
 
 [![Travis CI](https://img.shields.io/travis/SimonWaldherr/cgolGo.svg?style=flat)](https://travis-ci.org/SimonWaldherr/cgolGo)
-[![Flattr donate button](https://img.shields.io/badge/donate%20via-flattr-green.svg)](https://flattr.com/submit/auto?user_id=SimonWaldherr&url=http%3A%2F%2Fgithub.com%2FSimonWaldherr%2FcgolGo "Donate monthly to this project using Flattr") 
-[![PayPal donate button](https://img.shields.io/badge/donate%20via-paypal-blue.svg)](https://www.paypal.me/SimonWaldherr "Donate to this project via PayPal.me") 
+[![Go Report Card](https://goreportcard.com/badge/github.com/simonwaldherr/cgolGo)](https://goreportcard.com/report/github.com/simonwaldherr/cgolGo)
+[![codebeat badge](https://codebeat.co/badges/a20ab70f-2baa-490b-8fcf-69ac1961e969)](https://codebeat.co/projects/github-com-simonwaldherr-cgolgo-master)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/SimonWaldherr/cgolGo/master/LICENSE)  
 
 ## conway's game of life in golang
 
-[Conway's Game of Life](http://en.wikipedia.org/wiki/Conway's_Game_of_Life)  
+[Conway's Game of Life](http://en.wikipedia.org/wiki/Conway's_Game_of_Life) 
 in [golang](http://en.wikipedia.org/wiki/Go_(programming_language))  
 
 ## examples
