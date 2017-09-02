@@ -37,8 +37,8 @@ func buildImage(arr [][]int) *image.Paletted {
 			image.Point{len(arr[0]), len(arr)},
 		},
 		color.Palette{
-			color.Gray{uint8(255)},
 			color.Gray{uint8(0)},
+			color.Gray{uint8(255)},
 		},
 	)
 
@@ -46,6 +46,10 @@ func buildImage(arr [][]int) *image.Paletted {
 		for y, yv := range xv {
 			if yv > 0 {
 				frame.SetColorIndex(y, x, uint8(1))
+				//frame.Set(y, x, color.RGBA{uint8(255), uint8(255), uint8(255), uint8(255)})
+			} else {
+				frame.SetColorIndex(y, x, uint8(0))
+				//frame.Set(y, x, color.RGBA{uint8(0), uint8(0), uint8(0), uint8(255)})
 			}
 		}
 	}
