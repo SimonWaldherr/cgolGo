@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "INSERT A FRAMERATE AND CONFIRM WITH \"ENTER\" [15]"
 read -s -t 30 FPS
