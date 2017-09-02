@@ -8,6 +8,7 @@ import (
 	"os"
 )
 
+// Field contains all informations about the current status of all cells
 type Field struct {
 	cells  [][]int
 	width  int
@@ -22,6 +23,7 @@ func newField(width, height int) *Field {
 	return &Field{cells: cells, width: width, height: height}
 }
 
+// GetCells returns the non-public cells value of the field
 func (field *Field) GetCells() [][]int {
 	return field.cells
 }
@@ -55,13 +57,13 @@ func (field *Field) nextVitality(x, y int) int {
 	if alive == 3 || alive == 2 && (vitality > 0) {
 		if vitality < 8 {
 			return vitality + 1
-		} else {
-			return vitality
 		}
+		return vitality
 	}
 	return 0
 }
 
+// GenerateFirstRound generates a new field with a (pseudo) random seed
 func GenerateFirstRound(width, height int) *Field {
 	field := newField(width, height)
 	for i := 0; i < (width * height / 4); i++ {
@@ -70,69 +72,69 @@ func GenerateFirstRound(width, height int) *Field {
 	return field
 }
 
+// LoadFirstRound generates a new field from a text-file
 func LoadFirstRound(width, height int, filename string) *Field {
 	finfo, err := os.Stat(filename)
 	if err != nil {
 		fmt.Println(filename + " doesn't exist")
 		return GenerateFirstRound(width, height)
-	} else {
-		if finfo.IsDir() {
-			fmt.Println(filename + " is a directory")
-			return GenerateFirstRound(width, height)
-		} else {
-			field := newField(width, height)
-			gofile, _ := ioutil.ReadFile(filename)
-			output := []rune(string(gofile))
-			x := 0
-			y := 0
-			for _, char := range output {
-				switch char {
-				case 10:
-					y++
-					x = 0
-				case 49:
-					field.setVitality(x, y, 1)
-				case 50:
-					field.setVitality(x, y, 2)
-				case 51:
-					field.setVitality(x, y, 3)
-				case 52:
-					field.setVitality(x, y, 4)
-				case 53:
-					field.setVitality(x, y, 5)
-				case 54:
-					field.setVitality(x, y, 6)
-				case 55:
-					field.setVitality(x, y, 7)
-				case 56:
-					field.setVitality(x, y, 8)
-				case 57:
-					field.setVitality(x, y, 9)
-				default:
-					if char != 32 {
-						field.setVitality(x, y, 1)
-					} else {
-						field.setVitality(x, y, 0)
-					}
-				}
-				x++
-			}
-			return field
-		}
 	}
-	return GenerateFirstRound(width, height)
+	if finfo.IsDir() {
+		fmt.Println(filename + " is a directory")
+		return GenerateFirstRound(width, height)
+	}
+	field := newField(width, height)
+	gofile, _ := ioutil.ReadFile(filename)
+
+	x := 0
+	y := 0
+	for _, char := range gofile {
+		switch char {
+		case 10:
+			y++
+			x = 0
+		case 49:
+			field.setVitality(x, y, 1)
+		case 50:
+			field.setVitality(x, y, 2)
+		case 51:
+			field.setVitality(x, y, 3)
+		case 52:
+			field.setVitality(x, y, 4)
+		case 53:
+			field.setVitality(x, y, 5)
+		case 54:
+			field.setVitality(x, y, 6)
+		case 55:
+			field.setVitality(x, y, 7)
+		case 56:
+			field.setVitality(x, y, 8)
+		case 57:
+			field.setVitality(x, y, 9)
+		default:
+			if char != 32 {
+				field.setVitality(x, y, 1)
+			} else {
+				field.setVitality(x, y, 0)
+			}
+		}
+		x++
+	}
+	return field
 }
 
+// NextRound looks at every cell and calculates its new value, it returns the new field
 func (field *Field) NextRound() *Field {
-	new_field := newField(field.width, field.height)
+	newFieldVar := newField(field.width, field.height)
 	for y := 0; y < field.height; y++ {
 		for x := 0; x < field.width; x++ {
-			new_field.setVitality(x, y, field.nextVitality(x, y))
+			newFieldVar.setVitality(x, y, field.nextVitality(x, y))
 		}
 	}
-	return new_field
+	return newFieldVar
 }
 
+// PrintField returns a string representing the value of all cells
 func (field *Field) PrintField() string {
 	var buffer bytes.Buffer
 	for y := 0; y < field.height; y++ {
