@@ -8,11 +8,13 @@ import (
 	"os"
 )
 
+// GifVisualizer contains data for the GIF generator
 type GifVisualizer struct {
 	name string
 	g    *gif.GIF
 }
 
+// Setup sets the loop count and name of the gif
 func (gv *GifVisualizer) Setup(name string) {
 	gv.g = &gif.GIF{
 		LoopCount: 1,
@@ -20,12 +22,14 @@ func (gv *GifVisualizer) Setup(name string) {
 	gv.name = name
 }
 
+// AddFrame adds frames based on the 2 dimensional int map
 func (gv *GifVisualizer) AddFrame(arr [][]int) {
 	frame := buildImage(arr)
 	gv.g.Image = append(gv.g.Image, frame)
 	gv.g.Delay = append(gv.g.Delay, 2)
 }
 
+// Complete writes the GIF-file
 func (gv *GifVisualizer) Complete() {
 	writeGif(gv.name, gv.g)
 }
@@ -45,11 +49,11 @@ func buildImage(arr [][]int) *image.Paletted {
 	for x, xv := range arr {
 		for y, yv := range xv {
 			if yv > 0 {
-				frame.SetColorIndex(y, x, uint8(1))
-				//frame.Set(y, x, color.RGBA{uint8(255), uint8(255), uint8(255), uint8(255)})
+				//frame.SetColorIndex(y, x, uint8(1))
+				frame.Set(y, x, color.RGBA{uint8(255), uint8(255), uint8(255), uint8(255)})
 			} else {
-				frame.SetColorIndex(y, x, uint8(0))
-				//frame.Set(y, x, color.RGBA{uint8(0), uint8(0), uint8(0), uint8(255)})
+				//frame.SetColorIndex(y, x, uint8(0))
+				frame.Set(y, x, color.RGBA{uint8(0), uint8(0), uint8(0), uint8(255)})
 			}
 		}
 	}

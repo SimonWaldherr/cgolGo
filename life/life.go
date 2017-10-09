@@ -94,7 +94,7 @@ func LoadFirstRound(width, height int, filename string) *Field {
 			y++
 			x = 0
 		case char > 48 && char < 58:
-			field.setVitality(x, y, int(char) - 48)
+			field.setVitality(x, y, int(char)-48)
 		default:
 			if char != 32 {
 				field.setVitality(x, y, 1)
