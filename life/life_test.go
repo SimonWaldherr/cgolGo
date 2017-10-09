@@ -15,15 +15,33 @@ func Test_RandomRound(t *testing.T) {
 }
 
 func Test_LoadRound(t *testing.T) {
-	var filename string
+	var folder string
 
 	if f, err := os.Stat("./structures/"); err == nil && f.IsDir() {
-		filename = "./structures/"
+		folder = "./structures/"
 	} else if f, err := os.Stat("../structures/"); err == nil && f.IsDir() {
-		filename = "../structures/"
+		folder = "../structures/"
 	}
 
-	field := LoadFirstRound(64, 64, filename+"01.txt")
+	field := LoadFirstRound(64, 64, folder+"01.txt")
+	for i := 0; i != 64; i++ {
+		field = field.NextRound()
+	}
+}
+
+func Test_LoadErrors(t *testing.T) {
+	var folder string
+
+	if f, err := os.Stat("./structures/"); err == nil && f.IsDir() {
+		folder = "./structures/"
+	} else if f, err := os.Stat("../structures/"); err == nil && f.IsDir() {
+		folder = "../structures/"
+	}
+
+	field := LoadFirstRound(64, 64, "foo")
+	field = LoadFirstRound(64, 64, folder)
+	field = LoadFirstRound(64, 64, folder+"24.txt")
+
 	for i := 0; i != 64; i++ {
 		field = field.NextRound()
 	}
