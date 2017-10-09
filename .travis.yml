@@ -1,10 +1,8 @@
 os:
-- osx
 - linux
 language: go
 sudo: false
 go:
-- 1.9
 - release
 before_install:
 - go get github.com/axw/gocov/gocov
@@ -16,6 +14,7 @@ install:
 script:
 - $HOME/gopath/bin/cgolGo -d 100
 - go test -v -coverprofile=life.coverprofile ./life
+- go test -v -coverprofile=gif.coverprofile ./gif
 # combine all coverprofiles in one file
 - $HOME/gopath/bin/gover
 # send coverage details to Coveralls.io
