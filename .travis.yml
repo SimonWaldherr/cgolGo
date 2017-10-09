@@ -4,12 +4,28 @@ os:
 language: go
 sudo: false
 go:
-- 1.4.2
 - 1.9
+- release
+before_install:
+- go get github.com/axw/gocov/gocov
+- go get github.com/mattn/goveralls
+- go get golang.org/x/tools/cmd/cover
 install:
 - go get -u -t simonwaldherr.de/go/cgolGo
+- go get github.com/modocache/gover
 script:
 - $HOME/gopath/bin/cgolGo -d 100
+- go test -v -coverprofile=life.coverprofile ./life
+# combine all coverprofiles in one file
+- $HOME/gopath/bin/gover
+# send coverage details to Coveralls.io
+- $HOME/gopath/bin/goveralls -coverprofile=gover.coverprofile -service=travis-ci
+# generate a coverage detail HTML page
+- go tool cover -html=gover.coverprofile -o coverage.html
+# print the coverage percentage for each function to the log
+- go tool cover -func=gover.coverprofile
+after_success:
+- bash <(curl -s https://codecov.io/bash)
 notifications:
   email:
     recipients:

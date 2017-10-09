@@ -3,6 +3,8 @@
 [![Travis CI](https://img.shields.io/travis/SimonWaldherr/cgolGo.svg?style=flat)](https://travis-ci.org/SimonWaldherr/cgolGo)
 [![Go Report Card](https://goreportcard.com/badge/github.com/simonwaldherr/cgolGo)](https://goreportcard.com/report/github.com/simonwaldherr/cgolGo)
 [![codebeat badge](https://codebeat.co/badges/a20ab70f-2baa-490b-8fcf-69ac1961e969)](https://codebeat.co/projects/github-com-simonwaldherr-cgolgo-master)
+[![codecov](https://codecov.io/gh/SimonWaldherr/cgolGo/branch/master/graph/badge.svg)](https://codecov.io/gh/SimonWaldherr/cgolGo)
+[![Coverage Status](https://coveralls.io/repos/github/SimonWaldherr/cgolGo/badge.svg?branch=master)](https://coveralls.io/github/SimonWaldherr/cgolGo?branch=master)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/SimonWaldherr/cgolGo/life) 
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/SimonWaldherr/cgolGo/master/LICENSE)  
 
