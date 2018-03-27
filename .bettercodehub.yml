@@ -1,0 +1,8 @@
+exclude:
+- /start.sh
+- /startGIF.sh
+- /structsGIF.sh
+component_depth: 1
+languages:
+- go
+- script
