@@ -12,7 +12,7 @@ install:
 - go get -u -t simonwaldherr.de/go/cgolGo/...
 - go get github.com/modocache/gover
 script:
-- $HOME/gopath/bin/cgolGo -d 100
+- $HOME/gopath/bin/cgol -d 100
 - go test -v -coverprofile=life.coverprofile ./life
 - go test -v -coverprofile=gif.coverprofile ./gif
 # combine all coverprofiles in one file
