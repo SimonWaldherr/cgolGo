@@ -35,6 +35,8 @@ func GenerateFirstRound(width, height int) *Field {
 	return field
 }
 
+// LoadFirstRound wraps LoadFirstRoundFromTXT or
+// LoadFirstRoundFromRLE depending on the file extension
 func LoadFirstRound(width, height int, filename string) *Field {
 	switch filepath.Ext(filename) {
 	case ".txt":

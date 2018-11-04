@@ -3,13 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
+	"time"
+
+	"simonwaldherr.de/go/golibs/gcurses"
 	"simonwaldherr.de/go/cgolGo/gif"
 	"simonwaldherr.de/go/cgolGo/life"
-	"simonwaldherr.de/go/golibs/gcurses"
-	"time"
 )
-
-var field *life.Field
 
 var (
 	setfps       int
@@ -22,9 +21,10 @@ var (
 	port         string
 )
 
-func main() {
-	var gv = &gif.GifVisualizer{}
+var field *life.Field
+var gv = &gif.GifVisualizer{}
 
+func main() {
 	writer := gcurses.New()
 	writer.Start()
 

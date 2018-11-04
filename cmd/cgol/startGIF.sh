@@ -44,13 +44,13 @@ fi
 
 if [ "$INPUT" == "R" ] || [ "$INPUT" == "r" ]
   then
-  go run cgol.go -w $((WIDTH/4)) -h $((HEIGHT/4)) -d $FRAMES -g cgol
+  go run main.go -w $((WIDTH/4)) -h $((HEIGHT/4)) -d $FRAMES -g cgol
 elif [ "$INPUT" == "F" ] || [ "$INPUT" == "f" ]
   then
   echo "ENTER THE NAME OF A FILE"
-  ls "structures"
+  ls "../../structures"
   read -n 2 -s INPUT
-  go run cgol.go -w $((WIDTH/4)) -h $((HEIGHT/4)) -d $FRAMES -g cgol -o "structures/$INPUT.txt"
+  go run main.go -w $((WIDTH/4)) -h $((HEIGHT/4)) -d $FRAMES -g cgol -o "../../structures/$INPUT.txt"
 fi
 
 gifsicle --resize-width $WIDTH -O --careful -d $((100/FPS)) -o cgol.gif cgol.gif
