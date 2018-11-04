@@ -7,6 +7,18 @@ import (
 	"testing"
 )
 
+func getFolder() string {
+	var folder string
+
+	if f, err := os.Stat("./structures/"); err == nil && f.IsDir() {
+		folder = "./structures/"
+	} else if f, err := os.Stat("../structures/"); err == nil && f.IsDir() {
+		folder = "../structures/"
+	}
+
+	return folder
+}
+
 func Test_RandomRound(t *testing.T) {
 	field := GenerateFirstRound(64, 64)
 	for i := 0; i != 64; i++ {
@@ -15,13 +27,7 @@ func Test_RandomRound(t *testing.T) {
 }
 
 func Test_LoadRound(t *testing.T) {
-	var folder string
-
-	if f, err := os.Stat("./structures/"); err == nil && f.IsDir() {
-		folder = "./structures/"
-	} else if f, err := os.Stat("../structures/"); err == nil && f.IsDir() {
-		folder = "../structures/"
-	}
+	folder := getFolder()
 
 	field := LoadFirstRound(64, 64, folder+"01.txt")
 	for i := 0; i != 64; i++ {
@@ -30,13 +36,7 @@ func Test_LoadRound(t *testing.T) {
 }
 
 func Test_LoadErrors(t *testing.T) {
-	var folder string
-
-	if f, err := os.Stat("./structures/"); err == nil && f.IsDir() {
-		folder = "./structures/"
-	} else if f, err := os.Stat("../structures/"); err == nil && f.IsDir() {
-		folder = "../structures/"
-	}
+	folder := getFolder()
 
 	field := LoadFirstRound(64, 64, "foo")
 	field = LoadFirstRound(64, 64, folder)
@@ -61,4 +61,13 @@ func Test_GIF(t *testing.T) {
 		gv.AddFrame(field.GetCells())
 	}
 	gv.Complete()
+}
+
+func Test_PrintField(t *testing.T) {
+	folder := getFolder()
+
+	field := LoadFirstRound(1, 1, folder+"26.rle")
+	if field.PrintField() != " █ \n  █\n███\n" {
+		t.Fatalf("PrintField returns wrong string")
+	}
 }

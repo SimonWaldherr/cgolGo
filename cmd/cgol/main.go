@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"simonwaldherr.de/go/golibs/gcurses"
 	"simonwaldherr.de/go/cgolGo/gif"
 	"simonwaldherr.de/go/cgolGo/life"
+	"simonwaldherr.de/go/golibs/gcurses"
 )
 
 var (
