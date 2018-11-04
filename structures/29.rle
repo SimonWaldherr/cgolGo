@@ -1,0 +1,8 @@
+#N Ring of fire
+x = 34, y = 30, rule = B3/S23
+16bo$14bobobo$12bobobobobo$10bobobobobobobo$8bobobo2b2obobobobo$6bobobobo6bo
+2bobobo$4bobobo2bo10bobobobo$5b2obo14bo2bobobo$3bo3bo18bob2o$4b3o20bo3bo$2bo
+25b3o$3b2o27bo$bo3bo24b2o$2b4o23bo3bo$o29b3o$b3o29bo$o3bo23b4o$2b2o24bo3bo$bo
+27b2o$3b3o25bo$2bo3bo20b3o$4b2obo18bo3bo$3bobobo2bo14bob2o$5bobobobo10bo2bobo
+bo$7bobobo2bo6bobobobo$9bobobobob2o2bobobo$11bobobobobobobo$13bobobobobo$15bo
+bobo$17bo!

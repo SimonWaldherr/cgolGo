@@ -1,0 +1,16 @@
+#N Lone dot agar
+#C Example stabilization of a finite patch of lone dot agar, creating a period-2 oscillator.
+#O Dean Hickerson and Alan W. Hensel, 1995
+x = 40, y = 40, rule = B3/S23
+4b2o2b2o2b2o2b2o2b2o2b2o2b2o2b2o$4bo2bobo2bo2bobo2bo2bobo2bo2bobo$5bo
+7bo7bo7bo$8bo7bo7bo7bo$2o2bobo5bobo5bobo5bobo5b2o$obo5bobo5bobo5bobo5b
+obo2bo$4bo7bo7bo7bo7bo$bo7bo7bo7bo7bo$o2bobo5bobo5bobo5bobo5bobo$2o5bo
+bo5bobo5bobo5bobo2b2o$5bo7bo7bo7bo$8bo7bo7bo7bo$2o2bobo5bobo5bobo5bobo
+5b2o$obo5bobo5bobo5bobo5bobo2bo$4bo7bo7bo7bo7bo$bo7bo7bo7bo7bo$o2bobo
+5bobo5bobo5bobo5bobo$2o5bobo5bobo5bobo5bobo2b2o$5bo7bo7bo7bo$8bo7bo7bo
+7bo$2o2bobo5bobo5bobo5bobo5b2o$obo5bobo5bobo5bobo5bobo2bo$4bo7bo7bo7bo
+7bo$bo7bo7bo7bo7bo$o2bobo5bobo5bobo5bobo5bobo$2o5bobo5bobo5bobo5bobo2b
+2o$5bo7bo7bo7bo$8bo7bo7bo7bo$2o2bobo5bobo5bobo5bobo5b2o$obo5bobo5bobo
+5bobo5bobo2bo$4bo7bo7bo7bo7bo$bo7bo7bo7bo7bo$o2bobo5bobo5bobo5bobo5bob
+o$2o5bobo5bobo5bobo5bobo2b2o$5bo7bo7bo7bo$8bo7bo7bo7bo$4bobo2bo2bobo2b
+o2bobo2bo2bobo2bo$4b2o2b2o2b2o2b2o2b2o2b2o2b2o2b2o!
