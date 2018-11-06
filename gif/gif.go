@@ -63,18 +63,15 @@ func buildImage(arr [][]int) *image.Paletted {
 func writeGif(name string, g *gif.GIF) {
 	w, err := os.Create(name + ".gif")
 	if err != nil {
-		fmt.Println("os.Create")
-		panic(err)
+		fmt.Printf("os.Create Error: %v\n", err)
 	}
 	defer func() {
 		if err := w.Close(); err != nil {
-			fmt.Println("w.Close")
-			panic(err)
+			fmt.Printf("w.Close Error: %v\n", err)
 		}
 	}()
 	err = gif.EncodeAll(w, g)
 	if err != nil {
-		fmt.Println("gif.EncodeAll")
-		panic(err)
+		fmt.Printf("gif.EncodeAll Error: %v\n", err)
 	}
 }

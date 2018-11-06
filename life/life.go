@@ -25,7 +25,8 @@ func (field *Field) getVitality(x, y int) int {
 	return field.cells[y][x]
 }
 
-func (field *Field) nextVitality(x, y int) int {
+// LivingNeighbors returns the number of living neighbors of a cell
+func (field *Field) LivingNeighbors(x, y int) int {
 	alive := 0
 	for i := -1; i <= 1; i++ {
 		for j := -1; j <= 1; j++ {
@@ -34,12 +35,15 @@ func (field *Field) nextVitality(x, y int) int {
 			}
 		}
 	}
-	vitality := field.getVitality(x, y)
-	if alive == 3 || alive == 2 && (vitality > 0) {
-		if vitality < 8 {
-			return vitality + 1
-		}
-		return vitality
+	return alive
+}
+
+// NextVitality returns the vitality of a cell in the next round
+func (field *Field) NextVitality(x, y int) int {
+	livingNeighbors := field.LivingNeighbors(x, y)
+	isLiving := field.getVitality(x, y) > 0
+	if livingNeighbors == 3 || (livingNeighbors == 2 && isLiving) {
+		return 1
 	}
 	return 0
 }
@@ -49,7 +53,7 @@ func (field *Field) NextRound() *Field {
 	newFieldVar := newField(field.width, field.height)
 	for y := 0; y < field.height; y++ {
 		for x := 0; x < field.width; x++ {
-			newFieldVar.setVitality(x, y, field.nextVitality(x, y))
+			newFieldVar.setVitality(x, y, field.NextVitality(x, y))
 		}
 	}
 	return newFieldVar

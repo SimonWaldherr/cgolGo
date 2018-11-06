@@ -39,9 +39,11 @@ func Test_LoadErrors(t *testing.T) {
 	folder := getFolder()
 
 	field := LoadFirstRound(64, 64, "foo")
+	field = LoadFirstRound(64, 64, "/")
 	field = LoadFirstRound(64, 64, folder)
 	field = LoadFirstRound(64, 64, folder+"24.txt")
 	field = LoadFirstRound(64, 64, folder+"25.rle")
+	field = LoadFirstRound(64, 64, folder+"10.rle")
 
 	for i := 0; i != 64; i++ {
 		field = field.NextRound()

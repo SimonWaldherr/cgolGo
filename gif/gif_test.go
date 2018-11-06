@@ -13,3 +13,13 @@ func Test_GIF(t *testing.T) {
 	gv.AddFrame([][]int{{0, 1, 0}, {0, 0, 1}, {1, 1, 1}})
 	gv.Complete()
 }
+
+func Test_Complete(t *testing.T) {
+	var gv = &GifVisualizer{}
+	gv.Setup("//")
+
+	gv.AddFrame([][]int{{0, 1, 0}, {0, 0, 1}, {1, 1, 1}})
+	gv.AddFrame([][]int{{1, 0, 1}, {1, 1, 0}, {0, 0, 0}})
+	gv.AddFrame([][]int{{0, 1, 0}, {0, 0, 1}, {1, 1, 1}})
+	gv.Complete()
+}
