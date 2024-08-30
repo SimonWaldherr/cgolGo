@@ -11,14 +11,14 @@ import (
 )
 
 var (
-	framesPerSecond       int
+	framesPerSecond   int
 	terminalWidth     int
 	terminalHeight    int
-	gameDuration  int
-	gifOutputLength int
-	inputFilename  string
-	gifOutputFilename   string
-	port         string
+	gameDuration      int
+	gifOutputLength   int
+	inputFilename     string
+	gifOutputFilename string
+	port              string
 )
 
 var field *life.Field

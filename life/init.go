@@ -11,19 +11,19 @@ import (
 	"strconv"
 )
 
-// Field contains all informations about the current status of all cells
+// Field represents the grid in the Game of Life.
 type Field struct {
-	cells  [][]int
-	width  int
-	height int
+	width, height int
+	cells         [][]int
 }
 
+// newField initializes a new Field with the given width and height.
 func newField(width, height int) *Field {
 	cells := make([][]int, height)
-	for cols := range cells {
-		cells[cols] = make([]int, width)
+	for i := range cells {
+		cells[i] = make([]int, width)
 	}
-	return &Field{cells: cells, width: width, height: height}
+	return &Field{width: width, height: height, cells: cells}
 }
 
 // GenerateFirstRound generates a new field with a (pseudo) random seed
