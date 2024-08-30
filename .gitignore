@@ -4,3 +4,8 @@
 cmd/cgol/cgol
 tmp.gif
 *.gif
+cgol-linux-amd64
+cgol-linux-arm
+cgol-macos
+cgol-old
+cgol-windows-amd64.exe

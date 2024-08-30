@@ -11,55 +11,61 @@ import (
 )
 
 var (
-	setfps       int
-	setwidth     int
-	setheight    int
-	setduration  int
-	outputlength int
-	setfilename  string
-	outputfile   string
+	framesPerSecond       int
+	terminalWidth     int
+	terminalHeight    int
+	gameDuration  int
+	gifOutputLength int
+	inputFilename  string
+	gifOutputFilename   string
 	port         string
 )
 
 var field *life.Field
 var gv = &gif.GifVisualizer{}
 
+func initFlags() {
+	flag.IntVar(&terminalWidth, "w", 80, "terminal width")
+	flag.IntVar(&terminalHeight, "h", 20, "terminal height")
+	flag.IntVar(&gameDuration, "d", -1, "game of life duration")
+	flag.IntVar(&framesPerSecond, "f", 20, "frames per second")
+	flag.StringVar(&inputFilename, "o", "", "open file")
+	flag.StringVar(&gifOutputFilename, "g", "", "export to GIF file")
+	flag.IntVar(&gifOutputLength, "l", 200, "frames")
+	flag.Parse()
+}
+
+func initializeField() {
+	if inputFilename != "" {
+		field = life.LoadFirstRound(terminalWidth, terminalHeight, inputFilename)
+	} else {
+		field = life.GenerateFirstRound(terminalWidth, terminalHeight)
+	}
+}
+
 func main() {
 	writer := gcurses.New()
 	writer.Start()
 
-	flag.IntVar(&setwidth, "w", 80, "terminal width")
-	flag.IntVar(&setheight, "h", 20, "terminal height")
-	flag.IntVar(&setduration, "d", -1, "game of life duration")
-	flag.IntVar(&setfps, "f", 20, "frames per second")
-	flag.StringVar(&setfilename, "o", "", "open file")
+	initFlags()
 
-	flag.StringVar(&outputfile, "g", "", "export to GIF file")
-	flag.IntVar(&outputlength, "l", 200, "frames")
+	initializeField()
 
-	flag.Parse()
-
-	if setfilename != "" {
-		field = life.LoadFirstRound(setwidth, setheight, setfilename)
-	} else {
-		field = life.GenerateFirstRound(setwidth, setheight)
+	if gifOutputFilename != "" {
+		gv.Setup(gifOutputFilename)
 	}
 
-	if outputfile != "" {
-		gv.Setup(outputfile)
-	}
-
-	for i := 0; i != setduration; i++ {
+	for i := 0; i != gameDuration; i++ {
 		field = field.NextRound()
-		if outputfile != "" {
+		if gifOutputFilename != "" {
 			gv.AddFrame(field.GetCells())
 		} else {
-			time.Sleep(time.Second / time.Duration(setfps))
+			time.Sleep(time.Second / time.Duration(framesPerSecond))
 			fmt.Fprintf(writer, "%v\n", field.PrintField())
 		}
 	}
 
-	if outputfile != "" {
+	if gifOutputFilename != "" {
 		gv.Complete()
 	}
 }

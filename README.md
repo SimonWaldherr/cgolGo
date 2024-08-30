@@ -1,8 +1,5 @@
 # cgolGo
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d25d558df2b1437c8893a9b23f207e7e)](https://www.codacy.com/app/SimonWaldherr/cgolGo?utm_source=github.com&utm_medium=referral&utm_content=SimonWaldherr/cgolGo&utm_campaign=badger)
-[![BCH compliance](https://bettercodehub.com/edge/badge/SimonWaldherr/cgolGo?branch=codacy-badge)](https://bettercodehub.com/)
-[![Travis CI](https://img.shields.io/travis/SimonWaldherr/cgolGo.svg?style=flat)](https://travis-ci.org/SimonWaldherr/cgolGo)
 [![Go Report Card](https://goreportcard.com/badge/github.com/simonwaldherr/cgolGo)](https://goreportcard.com/report/github.com/simonwaldherr/cgolGo)
 [![Codebeat badge](https://codebeat.co/badges/a20ab70f-2baa-490b-8fcf-69ac1961e969)](https://codebeat.co/projects/github-com-simonwaldherr-cgolgo-master)
 [![Coverage Status](https://coveralls.io/repos/github/SimonWaldherr/cgolGo/badge.svg?branch=master)](https://coveralls.io/github/SimonWaldherr/cgolGo?branch=master)
