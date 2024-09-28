@@ -1,6 +1,6 @@
 # cgolGo
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/simonwaldherr/cgolGo)](https://goreportcard.com/report/github.com/simonwaldherr/cgolGo)
+[![Go Report Card](https://goreportcard.com/badge/simonwaldherr.de/go/cgolGo)](https://goreportcard.com/report/simonwaldherr.de/go/cgolGo)
 [![Codebeat badge](https://codebeat.co/badges/a20ab70f-2baa-490b-8fcf-69ac1961e969)](https://codebeat.co/projects/github-com-simonwaldherr-cgolgo-master)
 [![Coverage Status](https://coveralls.io/repos/github/SimonWaldherr/cgolGo/badge.svg?branch=master)](https://coveralls.io/github/SimonWaldherr/cgolGo?branch=master)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/SimonWaldherr/cgolGo/life) 
@@ -12,7 +12,7 @@
 in [Golang](http://en.wikipedia.org/wiki/Go_(programming_language))  
 
 Conway's Game of Life is a [zero-player game](https://en.wikipedia.org/wiki/Zero-player_game) - a [cellular automaton](https://en.wikipedia.org/wiki/Cellular_automaton) simulation invented by [John Horton Conway](https://en.wikipedia.org/wiki/John_Horton_Conway). 
-There are many implementations in every important programming language [here on GitHub](https://github.com/search?q=topic%3Aconway-game&type=Repositories). 
+There are many implementations in every important programming language [here on GitHub](https://github.com/SimonWaldherr/GameOfLife) or [search all of GitHub](https://github.com/search?q=topic%3Aconway-game&type=Repositories). 
 The map of a Game of Life consists of a two-dimensional grid of square cells. 
 Each cell can have one of to two possible states - dead or alive. 
 The future of a cell is determined by its own current status and that of the eight direct neighbors - vertically, horizontally and diagonally. 
