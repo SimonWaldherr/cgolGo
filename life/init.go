@@ -3,7 +3,6 @@ package life
 import (
 	"bufio"
 	"fmt"
-	"io/ioutil"
 	"math/rand"
 	"os"
 	"path/filepath"
@@ -48,7 +47,7 @@ func LoadFirstRound(width, height int, filename string) *Field {
 	}
 }
 
-// LoadFirstRound generates a new field from a text-file
+// LoadFirstRoundFromTXT generates a new field from a text-file
 func LoadFirstRoundFromTXT(width, height int, filename string) *Field {
 	finfo, err := os.Stat(filename)
 	if err != nil {
@@ -60,19 +59,23 @@ func LoadFirstRoundFromTXT(width, height int, filename string) *Field {
 		return GenerateFirstRound(width, height)
 	}
 	field := newField(width, height)
-	gofile, _ := ioutil.ReadFile(filename)
+	gofile, err := os.ReadFile(filename)
+	if err != nil {
+		fmt.Println(filename + " couldn't be read")
+		return GenerateFirstRound(width, height)
+	}
 
 	x := 0
 	y := 0
 	for _, char := range gofile {
 		switch {
-		case char == 10:
+		case char == '\n':
 			y++
 			x = 0
-		case char > 48 && char < 58:
-			field.setVitality(x, y, int(char)-48)
+		case char >= '1' && char <= '9':
+			field.setVitality(x, y, int(char)-'0')
 		default:
-			if char != 32 {
+			if char != ' ' {
 				field.setVitality(x, y, 1)
 			} else {
 				field.setVitality(x, y, 0)
@@ -83,7 +86,7 @@ func LoadFirstRoundFromTXT(width, height int, filename string) *Field {
 	return field
 }
 
-// LoadFirstRound generates a new field from a rle-text-file
+// LoadFirstRoundFromRLE generates a new field from a rle-text-file
 func LoadFirstRoundFromRLE(width, height int, filename string) *Field {
 	var length int
 	var field *Field
